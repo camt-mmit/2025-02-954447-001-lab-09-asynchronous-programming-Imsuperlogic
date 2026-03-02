@@ -283,155 +283,99 @@ input[type='number'],
 }
 
 :root {
-  /* 1. เปลี่ยนสีหลัก (ปุ่ม Nav, ปุ่มกด, เส้นขอบ) เป็นเขียวมิ้นต์ตุ่นๆ ให้สบายตา */
   --sys-brand-primary-color: #6eb897;
-
-  /* 2. เปลี่ยนสีรอง และสีปุ่มลบ (ถังขยะ) เป็นชมพูพาสเทลอมส้มพีช */
   --sys-brand-secondary-color: #ffbcab;
   --sys-warn-color: #ff9fa3;
-
-  /* 3. เปลี่ยนสีพื้นหลังทั้งเว็บ และสีตัวหนังสือ */
   --sys-surface-color: #f4fbf7;
   --sys-on-surface-color: #3b5247;
-
-  /* 4. เปลี่ยนฟอนต์ทั้งหมดให้กลมมน (รวมถึงตัวเลขด้วย) */
   --sys-font: 'Nunito', 'Mali', sans-serif;
   --sys-monospace-font: 'Nunito', 'Mali', sans-serif;
 }
 
-/* ทำให้ปุ่มเมนู (Nav) และปุ่มกดทั้งหมดเป็นแคปซูลมนๆ */
 .app-cmp-nav > *,
 .app-cmp-button {
   border-radius: 25px !important;
-  transition: all 0.3s ease;
+  font-family: var(--sys-font);
 }
 
-/* เพิ่มเอฟเฟกต์ปุ่มลอยขึ้นนิดๆ ตอนเอาเมาส์ชี้ */
-.app-cmp-nav > *:hover:not(.app-st-active),
-.app-cmp-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(110, 184, 151, 0.2);
-}
-
-/* ทำให้ขอบกล่อง Section โค้งมนและสีละมุนขึ้น */
-fieldset,
-._item-container {
+._main-form,
+._main-data,
+._items-container {
+  background-color: #ffffff;
   border-radius: 20px !important;
   border: 2px solid #bde6d3 !important;
-  background-color: #ffffff;
-  box-shadow: 0 4px 15px rgba(189, 230, 211, 0.15);
+  box-shadow: 0 8px 24px rgba(110, 184, 151, 0.12);
+  padding: 30px !important;
+  max-width: 800px !important;
+  margin: 30px auto !important;
 }
 
-/* ทำให้ช่องกรอกตัวเลขและข้อความโค้งมน */
-input,
-textarea {
-  border-radius: 12px !important;
-  border: 2px solid #cbeae0 !important;
-  transition: all 0.3s ease;
-  padding: 4px 8px; /* เพิ่มพื้นที่ให้พิมพ์ง่ายขึ้น */
-
-  /* เวลาคลิกพิมพ์ ให้ขอบเปลี่ยนเป็นสีพีช */
-  &:focus {
-    outline: none;
-    border-color: #ffbcab !important;
-    box-shadow: 0 0 0 3px rgba(255, 188, 171, 0.3);
-  }
-}
-
-/* --- 1. หน้า Profile: View (จัดรายการให้อ่านง่าย) --- */
-._main-data {
+dl._main-data,
+dl._values-container {
   display: grid !important;
-  grid-template-columns: 140px 1fr !important; /* แบ่ง 2 ฝั่ง ซ้ายหัวข้อ ขวาข้อมูล */
-  gap: 16px 24px; /* ช่องไฟระหว่างบรรทัด */
-  align-items: center;
-
-  max-width: 600px;
-  margin: 20px auto; /* ให้อยู่กึ่งกลางจอ */
-  padding: 30px;
-
-  background: #ffffff;
-  border-radius: 20px;
-  border: 2px solid #bde6d3;
-  box-shadow: 0 4px 15px rgba(189, 230, 211, 0.15);
+  grid-template-columns: minmax(100px, 150px) 1fr !important; /* ล็อกความกว้างหัวข้อ */
+  gap: 15px 25px !important;
+  align-items: baseline !important;
+  padding-left: 0 !important;
 
   dt {
-    font-weight: bold;
-    text-align: right; /* ดันหัวข้อชิดขวาไปหาข้อมูล */
-    color: #3b5247;
+    font-weight: 700 !important;
+    text-align: right !important;
+    margin: 0 !important;
+    color: var(--sys-brand-primary-color);
   }
 
   dd {
-    margin: 0;
-    color: #4a6358;
-    font-size: 1.1em;
+    margin: 0 !important;
+    font-family: var(--sys-font);
   }
 }
 
-/* --- 2. หน้า Profile: Form (จัดช่องกรอกให้ตรงกัน) --- */
-._info-form {
+label {
   display: flex !important;
-  flex-direction: column;
-  gap: 16px; /* ระยะห่างระหว่างช่องกรอก */
+  align-items: center !important;
+  gap: 20px !important;
+  margin-bottom: 15px !important;
 
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 30px;
+  b {
+    min-width: 120px !important;
+    text-align: right !important;
+    flex-shrink: 0 !important;
+  }
 
-  background: #ffffff;
-  border-radius: 20px;
-  border: 2px solid #bde6d3;
-  box-shadow: 0 4px 15px rgba(189, 230, 211, 0.15);
+  input,
+  textarea,
+  output {
+    flex-grow: 1 !important;
+    border-radius: 12px !important;
+    border: 2px solid #cbeae0 !important;
+    padding: 8px 15px !important;
+    transition: 0.3s;
 
-  label {
-    display: grid !important;
-    grid-template-columns: 120px 1fr !important; /* ล็อกความกว้างหัวข้อ */
-    align-items: center;
-    gap: 16px;
-    height: auto !important;
-
-    b {
-      text-align: right;
-      color: #3b5247;
-      margin: 0 !important;
+    &:focus {
+      border-color: var(--sys-brand-secondary-color) !important;
+      box-shadow: 0 0 0 4px rgba(255, 188, 171, 0.2);
     }
   }
 }
 
-/* --- 3. หน้า Assignment: View (บีบตารางไม่ให้ยืดสุดจอ) --- */
-/* กรอบนอกของแต่ละ Section */
-._items-container > section._item-container {
-  max-width: 500px; /* บีบไม่ให้กว้างเกินไป */
-  margin: 0 auto 24px auto; /* จัดให้อยู่กึ่งกลาง */
-  padding: 24px;
+fieldset._item-container,
+section._item-container {
+  border-radius: 18px !important;
+  border: 2px dashed #cbeae0 !important; /* ใช้เส้นประให้ดูน่ารัก */
+  background-color: #f9fdfb;
+  margin-bottom: 25px !important;
+  padding: 20px !important;
+
+  h3 {
+    color: var(--sys-brand-primary-color);
+    margin-top: 0;
+  }
 }
 
-/* ตารางด้านใน (Number / Result) */
-._values-container {
-  display: grid !important;
-  grid-template-columns: 120px 1fr !important;
-  gap: 12px 24px;
-  align-items: center;
-  padding-left: 0 !important; /* เอา Padding เดิมทิ้ง */
-  margin-top: 16px;
-
-  dt {
-    font-weight: 600;
-    color: #3b5247;
-    margin: 0;
-  }
-
-  dd {
-    margin: 0;
-    text-align: right; /* ดันตัวเลขไปชิดขวา */
-    background: #f4fbf7; /* ไฮไลท์พื้นหลังตัวเลขเบาๆ */
-    padding: 8px 16px;
-    border-radius: 12px;
-  }
-
-  /* เน้นช่อง Result ให้ชัดเจนขึ้น */
-  ._values-total {
-    background: #ffebe8; /* สีพื้นหลังอมพีช */
-    color: #ff8c94 !important;
-    font-size: 1.1em;
-  }
+._values-total,
+output.app-cl-number {
+  font-weight: 800 !important;
+  color: #ff8c94 !important;
+  text-decoration: underline wavy #ffbcab !important; /* เส้นใต้หยักๆ สีพีช */
 }
