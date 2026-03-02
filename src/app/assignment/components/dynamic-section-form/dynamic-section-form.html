@@ -7,7 +7,7 @@
   </legend>
 
   <div class="_items-form">
-    @for (item of form().controls(); track $index) {
+    @for (item of form; track item) {
       <fieldset class="_item-container">
         <legend>
           <button type="button" (click)="addValue(item)" class="app-cmp-button">
@@ -29,7 +29,7 @@
         </legend>
 
         <div class="_values-form">
-          @for (value of item().controls(); track $index) {
+          @for (value of item; track value) {
             <div class="_value-container">
               <span class="_value-input">
                 <label>
@@ -37,7 +37,7 @@
                     Number
                     <span class="_value-title-no app-cl-number">{{ $index + 1 }}</span>
                   </b>
-                  <input type="number" [formField]="value.controls().value" />
+                  <input type="number" [formField]="value.value" />
                 </label>
               </span>
 
@@ -51,7 +51,6 @@
               </button>
             </div>
           }
-
           <div class="_value-container">
             <span class="_value-input">
               <label>
